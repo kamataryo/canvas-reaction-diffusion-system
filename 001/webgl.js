@@ -49,19 +49,21 @@ const main = async () => {
 		console.error('No webGL support😓')
 		return
 	}
+
+	// シェーダの GLSL プログラムをコンパイルして webGL コンテキストに付加する
 	const vertexShader = getShader(gl, gl.VERTEX_SHADER, vertexShaderSource)
 	const fragmentShader = getShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource)
-
 	const program = gl.createProgram()
 	gl.attachShader(program, vertexShader)
 	gl.attachShader(program, fragmentShader)
 	gl.linkProgram(program)
 
+	
 	const positionBuffer = gl.createBuffer()
 	gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
 
 	gl.viewport(0, 0, canvas.width, canvas.height)
-	// gl.clearColor(0, 0, 0, 0)
+	gl.clearColor(0, 0, 0, 0)
 	gl.clear(gl.COLOR_BUFFER_BIT)
 	gl.useProgram(program)
 
