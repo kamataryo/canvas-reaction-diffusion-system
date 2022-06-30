@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Canvas Reaction Diffusion System</title>
+  <style>
+    html, body, canvas {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+	<canvas width="512" height="512" id="canvas"></canvas>
+  <div>
+    <textarea name="" id="formula" style="width:512px;height:100px;" placeholder="sin(2.0 * x) / 2.0">sin(2.0 * x) / 2.0</textarea>
+  </div>
+  <div>
+    <button id="apply">apply</button>
+  </div>
+  <div>
+    <button class="sample" data-formula="sin(2.0 * x) / 2.0">sample 1</button>
+    <button class="sample" data-formula="pow(sin(10.0 * x), 8.0) / 2.0">sample 2</button>
+    <button class="sample" data-formula="sin(tan(x) + 10.0) / 2.0">sample 3</button>
+    <button class="sample" data-formula="abs(sin(10.0 * cos(x))) / 2.0">sample 4</button>
+  </div>
+  <script src="./webgl.js" type="module"></script>
+</body>
+</html>

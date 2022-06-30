@@ -3,10 +3,16 @@
 * @param {WebGLRenderingContext} gl
 * @param {number} type
 * @param {string} sourceURL
+* @param {object} macro
 */
-export const getShader = async (gl, type, sourceURL) => {
+export const getShader = async (gl, type, sourceURL, macro = {}) => {
   const resp = await fetch(sourceURL)
-  const source = await resp.text()
+  let source = await resp.text()
+
+  for (const key in macro) {
+    source = source.replace(`{{ ${key} }}`, macro[key])
+  }
+
   const shader = gl.createShader(type)
   gl.shaderSource(shader, source)
   gl.compileShader(shader)
